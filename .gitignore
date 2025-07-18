@@ -1,0 +1,37 @@
+# Unity generated folders  
+[Ll]ibrary/  
+[Tt]emp/  
+[Oo]bj/  
+[Bb]uild/  
+[Bb]uilds/  
+[Bb]ee/  
+[Bb]urstCache/  
+*.csproj  
+*.unityproj  
+*.sln  
+*.suo  
+*.user  
+*.userprefs  
+*.pidb  
+*.booproj  
+*.svd  
+ECHO est  ativado.
+# JetBrains Rider  
+.idea/  
+*.sln.iml  
+ECHO est  ativado.
+# VS Code  
+.vscode/  
+ECHO est  ativado.
+# OS generated  
+.DS_Store  
+Thumbs.db  
+ECHO est  ativado.
+# Unity package manager  
+Packages/packages-lock.json  
+ECHO est  ativado.
+# Cache e artefatos  
+Artifacts/  
+ScriptAssemblies/  
+ShaderCache/  
+*.log 
