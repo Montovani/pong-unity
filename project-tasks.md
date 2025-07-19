@@ -24,7 +24,7 @@
 # ✅ Project Tasks - Pong Clone
 
 ## 🎮 Gameplay Mechanics
-- [ ] Create paddles (2 players)
+- [x] Create paddles (2 players)
 - [ ] Code paddle movement
 - [ ] Create ball
 - [ ] Code ball movement and bouncing
@@ -48,7 +48,7 @@
 
 ## ⚙️ Setup
 - [x] Set up Unity project
-- [ ] Create main game scene
+- [x] Create main game scene
 - [ ] Configure game resolution and aspect ratio
 
 
