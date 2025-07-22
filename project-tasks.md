@@ -25,7 +25,8 @@
 
 ## 🎮 Gameplay Mechanics
 - [x] Create paddles (2 players)
-- [ ] Code paddle movement
+- [x] Code paddle movement
+- [ ] Code the map colision size
 - [ ] Create ball
 - [ ] Code ball movement and bouncing
 - [ ] Create scoring zones (left and right walls)
