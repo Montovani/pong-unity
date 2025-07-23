@@ -18,4 +18,18 @@ public class BallMovement : MonoBehaviour
     {
         rd.linearVelocity = direction * speed;
     }
+   void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Player"))
+    {
+        float paddleY = collision.transform.position.y;
+        float ballY = transform.position.y;
+
+        float difference = ballY - paddleY;
+        float paddleHeight = collision.collider.bounds.size.y;
+        float normalizedY = difference / (paddleHeight / 2);
+
+        direction = new Vector2(-direction.x, normalizedY).normalized;
+    }
+}
 }
