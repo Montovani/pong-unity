@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - xLimit
+  - yScore
+  - LeftGoal
+  - RightGoal
   layers:
   - Default
   - TransparentFX

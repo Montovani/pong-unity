@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
@@ -5,14 +6,15 @@ public class BallMovement : MonoBehaviour
     public float speed = 5f;
     private Rigidbody2D rd;
     private Vector2 direction;
-
+    private GameManager gameManager;
     void Start()
     {
         rd = GetComponent<Rigidbody2D>();
         float x = Random.value < 0.5f ? -1f : 1f;
         float y = Random.Range(1f, -1f);
         direction = new Vector2(x, y).normalized;
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
     void FixedUpdate()
     {
@@ -33,8 +35,29 @@ public class BallMovement : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("xLimit"))
         {
-            direction = new Vector2(direction.x,-direction.y);
+            direction = new Vector2(direction.x, -direction.y);
         }
-    
+        if (collision.gameObject.CompareTag("LeftGoal"))
+        {
+            gameManager.AddScore(2);
+            StartCoroutine(ResetBall());
+            Debug.Log(gameManager.player2Score);
+        }
+        if (collision.gameObject.CompareTag("RightGoal"))
+        {
+            gameManager.AddScore(1);
+            StartCoroutine(ResetBall());
+            Debug.Log(gameManager.player1Score);
+        }
+
+    }
+    private IEnumerator ResetBall()
+    {
+        direction = Vector2.zero;
+        transform.position = new Vector2(0, 0);
+        yield return new WaitForSeconds(1f);
+        float x = Random.value < 0.5f ? -1f : 1f;
+        float y = Random.Range(1f, -1f);
+        direction = new Vector2(x, y).normalized;
     }
 }
