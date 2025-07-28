@@ -18,6 +18,11 @@ public class BallMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (gameManager.GetCurrentState() != GameManager.GameState.Playing)
+            {
+                rd.linearVelocity = Vector2.zero;
+                return;
+            }
         rd.linearVelocity = direction * speed;
     }
     void OnCollisionEnter2D(Collision2D collision)

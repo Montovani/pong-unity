@@ -17,7 +17,7 @@ public class PaddleController : MonoBehaviour
         // Captura o input do jogador (teclas W/S ou setas se configurar Vertical2)
         verticalInput = Input.GetAxis("Vertical");
     }
-      void FixedUpdate()
+    void FixedUpdate()
     {
         // Aplica a velocidade vertical com base no input
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, verticalInput * speed);

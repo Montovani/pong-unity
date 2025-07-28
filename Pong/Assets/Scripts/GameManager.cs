@@ -1,11 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public int player1Score = 0;
     public int player2Score = 0;
+    public enum GameState
+    {
+        WaitingToStart,
+        Playing,
+        GameOver
+    }
+    public GameObject startText;
+    private GameState currentState = GameState.WaitingToStart;
 
     public void AddScore(int playerNumber)
     {
@@ -27,6 +36,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentState == GameState.WaitingToStart && Input.GetKeyDown(KeyCode.Space))
+        {
+            currentState = GameState.Playing;
+            startText.SetActive(false);
+        }
+
         if (player1Score == 5)
         {
             Debug.Log("Player 1 win");
@@ -38,9 +53,13 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ResetGame());
         }
     }
-   private IEnumerator ResetGame()
-   {
-    yield return new WaitForSeconds(1f);
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-   }
+    private IEnumerator ResetGame()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public GameState GetCurrentState()
+    {
+        return currentState;
+    }
 }
