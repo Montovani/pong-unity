@@ -60,7 +60,7 @@ public class BallMovement : MonoBehaviour
     {
         direction = Vector2.zero;
         transform.position = new Vector2(0, 0);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         float x = Random.value < 0.5f ? -1f : 1f;
         float y = Random.Range(1f, -1f);
         direction = new Vector2(x, y).normalized;
