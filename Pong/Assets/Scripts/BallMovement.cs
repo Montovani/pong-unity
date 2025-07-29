@@ -7,6 +7,8 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D rd;
     private Vector2 direction;
     private GameManager gameManager;
+    public AudioClip bounceSound; 
+    private AudioSource audioSource;
     void Start()
     {
         rd = GetComponent<Rigidbody2D>();
@@ -14,6 +16,7 @@ public class BallMovement : MonoBehaviour
         float y = Random.Range(1f, -1f);
         direction = new Vector2(x, y).normalized;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
 
     }
     void FixedUpdate()
@@ -37,10 +40,12 @@ public class BallMovement : MonoBehaviour
             float normalizedY = difference / (paddleHeight / 2); //Aqui ve se bateu no centro =0 cima +1 ou baixo -1
 
             direction = new Vector2(-direction.x, normalizedY).normalized;
+            audioSource.PlayOneShot(bounceSound);
         }
         if (collision.gameObject.CompareTag("xLimit"))
         {
             direction = new Vector2(direction.x, -direction.y);
+            audioSource.PlayOneShot(bounceSound);
         }
         if (collision.gameObject.CompareTag("LeftGoal"))
         {

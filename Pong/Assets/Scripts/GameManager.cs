@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject player02WinsText;
     public TextMeshProUGUI player01ScoreText;
     public TextMeshProUGUI player02ScoreText;
+    public AudioClip winSound;
+    private AudioSource audioSource;
 
     public void AddScore(int playerNumber)
     {
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
         else if (playerNumber == 2)
         {
             player2Score++;
-            player02ScoreText.text = $"Player 02: {player1Score}";
+            player02ScoreText.text = $"Player 02: {player2Score}";
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         player01WinsText.SetActive(false);
         player02WinsText.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,12 +62,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Player 1 win");
             player01WinsText.SetActive(true);
+            audioSource.PlayOneShot(winSound);
             StartCoroutine(ResetGame());
         }
         if (player2Score == 5)
         {
             Debug.Log("Player 2 win");
             player02WinsText.SetActive(true);
+            audioSource.PlayOneShot(winSound);
             StartCoroutine(ResetGame());
         }
     }
