@@ -35,7 +35,8 @@ This project helped me understand:
 - Writing simple C# scripts for movement and game logic
 - Detecting collisions and handling game events
 
-## 🎮 How to Play
+## 🎮 Credits
+Background music by: https://crescendo.itch.io/3-free-loopable-piano-themes
 
 1. Clone the repo:
    ```bash
